@@ -25,7 +25,7 @@ validate $? "Copied "
 
 yum list installed mongodb-org  &>>$logfile
 if [ $? -eq 0 ]; then
-    echo "Already installed so .. $Y SKIPPED INSTALLATION $N"
+    echo -e  "Already installed so .. $Y SKIPPED INSTALLATION $N"
 else
     dnf install mongodb-org -y &>>$logfile
     validate $? "Installed "
