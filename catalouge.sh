@@ -39,7 +39,7 @@ unzip /tmp/catalogue.zip  &>> $logfile
 npm install   &>> $logfile
 validate $? "user added, dir created downloaded unzipped and installed dependencies"
  #here cat.service  path shoulb be linux ,git pulled path and what is stoerd in my pc path both should be matched
-cp /home/centos/Roboshop-Shellscript/catalogue.service /etc/systemd/system/catalogue.service  &>> $logfile
+cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/catalogue.service  &>> $logfile
 validate $? "copied"
 
 systemctl daemon-reload  &>> $logfile
@@ -47,7 +47,7 @@ systemctl enable catalogue  &>> $logfile
 systemctl start catalogue  &>> $logfile
 validate $? "restared"
 #think that you are in linux folder after gil pull ,then tou r chanign to ect folder
-cp /home/centos/Roboshop-Shellscript/mongo.repo etc/yum.repos.d/mongo.repo  &>> $logfile
+cp /home/centos/roboshop-shell/mongo.repo etc/yum.repos.d/mongo.repo  &>> $logfile
 
 
 yum list installed mongodb-org-shell  &>>$logfile
