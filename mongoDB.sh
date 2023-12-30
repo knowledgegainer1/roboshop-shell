@@ -32,7 +32,7 @@ validate $? "enabled "
 systemctl start mongod   &>> $logfile
 validate $? "started "
 
-sed -e 's/127.0.0.1/0.0.0.0/g'  /etc/mongod.conf    &>> $logfile
+sed -i 's/127.0.0.1/0.0.0.0/g'  /etc/mongod.conf    &>> $logfile
 validate $? "Replaced Ip to 0.0.0.0 "
 
 systemctl restart mongod   &>> $logfile
