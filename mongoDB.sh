@@ -23,10 +23,9 @@ fi
 cp mongo.repo /etc/yum.repos.d/mongo.repo &>>$logfile
 validate $? "Copied "
 
-yum list installed mongodb-org
+yum list installed mongodb-org  &>>$logfile
 if [ $? -eq 0 ]; then
-    echo "Already installed"
-    exit 1
+    echo "Already installed so .. $Y SKIPPED INSTALLATION $N"
 else
     dnf install mongodb-org -y &>>$logfile
     validate $? "Installed "
