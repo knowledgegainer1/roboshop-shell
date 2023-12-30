@@ -12,7 +12,7 @@ validate() {
         echo -e " $R FAILED ...$N   $2 check logs at  /tmp/$0-$date.log"
         exit 1
     else
-        echo -e "$G Successfully $2"
+        echo -e "$G Successfully $2 $N"
     fi
 }
 if [ $id -ne 0 ]; then
