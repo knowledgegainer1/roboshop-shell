@@ -19,7 +19,7 @@ if [ $id -ne 0 ]; then
     echo -e "Dont have permission to do this !! $R Please run this by SUDO access $N"
     exit 1
 fi
-
+#try to absoltte path for mongodb to avoid error
 cp mongo.repo /etc/yum.repos.d/mongo.repo &>>$logfile
 validate $? "Copied "
 
