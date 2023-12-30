@@ -20,20 +20,26 @@ if [ $id -ne 0 ]; then
     exit 1
 fi
 
-cp mongo.repo  /etc/yum.repos.d/mongo.repo  &>> $logfile
+cp mongo.repo /etc/yum.repos.d/mongo.repo &>>$logfile
 validate $? "Copied "
 
-dnf install mongodb-org -y  &>> $logfile
-validate $? "Installed "
+yum list installed mongodb-org
+if [ $? -eq 0 ]; then
+    echo "Already installed"
+    exit 1
+else
+    dnf install mongodb-org -y &>>$logfile
+    validate $? "Installed "
+fi
 
-systemctl enable mongod   &>> $logfile
+systemctl enable mongod &>>$logfile
 validate $? "enabled "
 
-systemctl start mongod   &>> $logfile
+systemctl start mongod &>>$logfile
 validate $? "started "
 
-sed -i 's/127.0.0.1/0.0.0.0/g'  /etc/mongod.conf    &>> $logfile
+sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf &>>$logfile
 validate $? "Replaced Ip to 0.0.0.0 "
 
-systemctl restart mongod   &>> $logfile
+systemctl restart mongod &>>$logfile
 validate $? "restarted  and completing process"
