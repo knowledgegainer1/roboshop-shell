@@ -31,23 +31,23 @@ validate $? "enabled"
 dnf install nodejs -y  &>> $logfile
 validate $? "installing node js latest verison"
 
-useradd roboshop
-mkdir /app
-curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip
-cd /app 
-unzip /tmp/catalogue.zip
-npm install 
+useradd roboshop  &>> $logfile
+mkdir /app  &>> $logfile
+curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip  &>> $logfile
+cd /app   &>> $logfile
+unzip /tmp/catalogue.zip  &>> $logfile
+npm install   &>> $logfile
 validate $? "user added, dir created downloaded unzipped and installed dependencies"
  #here cat.service  path shoulb be linux ,git pulled path and what is stoerd in my pc path both should be matched
-cp /home/centos/Roboshop-Shellscript/catalogue.service /etc/systemd/system/catalogue.service
+cp /home/centos/Roboshop-Shellscript/catalogue.service /etc/systemd/system/catalogue.service  &>> $logfile
 validate $? "copied"
 
-systemctl daemon-reload
-systemctl enable catalogue
-systemctl start catalogue
+systemctl daemon-reload  &>> $logfile
+systemctl enable catalogue  &>> $logfile
+systemctl start catalogue  &>> $logfile
 validate $? "restared"
 #think that you are in linux folder after gil pull ,then tou r chanign to ect folder
-cp /home/centos/Roboshop-Shellscript/mongo.repo etc/yum.repos.d/mongo.repo
+cp /home/centos/Roboshop-Shellscript/mongo.repo etc/yum.repos.d/mongo.repo  &>> $logfile
 
 
 yum list installed mongodb-org-shell  &>>$logfile
@@ -59,4 +59,4 @@ else
 fi
 
 
-mongo --host mongo.ssrg.online </app/schema/catalogue.js
+mongo --host mongo.ssrg.online </app/schema/catalogue.js  &>> $logfile
