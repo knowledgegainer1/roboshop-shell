@@ -28,7 +28,7 @@ validate $? "enabled"
 dnf install nodejs -y &>>$logfile
 validate $? "installing node js latest verison"
 
-id roboshop
+id roboshop  
 if [ $? -eq 0 ]; then
     echo "user exists so Skipped"
 else
@@ -53,12 +53,7 @@ validate $? "restared"
 #think that you are in linux folder after gil pull ,then tou r chanign to ect folder
 cp /home/centos/roboshop-shell/mongo.repo etc/yum.repos.d/mongo.repo &>>$logfile
 
-yum list installed mongodb-org-shell &>>$logfile
-if [ $? -eq 0 ]; then
-    echo -e "Already installed so .. $Y SKIPPED INSTALLATION $N"
-else
-    dnf install mongodb-org-shell -y &>>$logfile
-    validate $? "Installed "
-fi
+dnf install mongodb-org-shell -y &>>$logfile
 
 mongo --host mongo.ssrg.online </app/schema/catalogue.js &>>$logfile
+echo "completed"
