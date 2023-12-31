@@ -45,7 +45,7 @@ cd /usr/share/nginx/html  &>>$logfile
 unzip -o  /tmp/web.zip    &>>$logfile
 validate $? "unzipped content"
 
-cp /home/centos/roboshop-shell /etc/nginx/default.d/roboshop.conf   &>>$logfile
+cp /home/centos/roboshop-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf   &>>$logfile
 validate $? "copied"
 
 systemctl restart nginx   &>>$logfile
