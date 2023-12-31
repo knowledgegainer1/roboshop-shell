@@ -54,6 +54,6 @@ validate $? "restared"
 cp /home/centos/roboshop-shell/mongo.repo etc/yum.repos.d/mongo.repo &>>$logfile
 
 dnf install mongodb-org-shell -y &>>$logfile
-
+validate $? "insyalled orgshell"
 mongo --host mongo.ssrg.online </app/schema/catalogue.js &>>$logfile
-echo "completed"
+validate $? "shema done"

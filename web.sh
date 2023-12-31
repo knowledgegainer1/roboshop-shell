@@ -20,7 +20,7 @@ if [ $id -ne 0 ]; then
     exit 1
 fi
 
-yum list installed nginx &>>$logfile
+dnf list installed nginx &>>$logfile
 
 if [ $? -eq 0 ]; then
     echo " existed"
