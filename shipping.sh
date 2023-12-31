@@ -39,6 +39,8 @@ mvn clean package
 mv target/shipping-1.0.jar shipping.jar
 
 validate $? "installed dependencies user"
+
+cp /home/centos/roboshop-shell/shipping.service /etc/systemd/system/shipping.service
 systemctl daemon-reload
 
 
