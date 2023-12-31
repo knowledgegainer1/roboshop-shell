@@ -21,22 +21,22 @@ if [ $id -ne 0 ]; then
 fi
 
 
-dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y
+dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y   &>> $logfile
 validate $? "installed version 8"
 
-dnf module enable redis:remi-6.2 -y
+dnf module enable redis:remi-6.2 -y  &>> $logfile
 validate  $? "enabled 6.2"
 
-dnf install redis -y
+dnf install redis -y  &>> $logfile
 validate  $? " installed redis"
 
-sed -i 's/127.0.0.1/0.0.0.0/g'    /etc/redis.conf
+sed -i 's/127.0.0.1/0.0.0.0/g'    /etc/redis.conf    &>> $logfile
 validate  $? " changes URL "
-sed -i 's//127.0.0.1/0.0.0.0/g' /etc/redis/redis.conf
+sed -i 's/127.0.0.1/0.0.0.0/g' /etc/redis/redis.conf   &>> $logfile
 validate  $? " changes URL redis"
-systemctl enable redis
+systemctl enable redis   &>> $logfile
 validate  $? "enabled redis"
-systemctl start redis
+systemctl start redis   &>> $logfile
 validate  $? " started redis"
-systemctl restart redis
+systemctl restart redis   &>> $logfile
 validate  $? " restarted redis"
