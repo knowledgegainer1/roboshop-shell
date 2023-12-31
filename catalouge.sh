@@ -50,7 +50,7 @@ systemctl daemon-reload &>>$logfile
 systemctl enable catalogue &>>$logfile
 systemctl start catalogue &>>$logfile
 validate $? "restared"
-#think that you are in linux folder after gil pull ,then tou r chanign to ect folder
+#think that you are in linux folder after gil pull ,then tou r chanign to ect folder  changed from linux git folder to linux etc folder
 cp /home/centos/roboshop-shell/mongo.repo etc/yum.repos.d/mongo.repo &>>$logfile
 
 dnf install mongodb-org-shell -y &>>$logfile
